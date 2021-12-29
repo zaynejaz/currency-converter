@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Currency Converter</h1>
+        </div>
+        <div class="date">2021-12-29</div>
+        <ul class="currencies">
+            <li id="USD" class="currency base-currency">
+                <img src="http://www.geonames.org/flags/l/us.gif" alt="USA flag" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.0000"></p>
+                    <p class="currency-name">USD = US Dollar</p>
+                    <p class="base-currency-rate">1 USD = 1 USD</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+            <li id="JPY" class="currency">
+                <img src="http://www.geonames.org/flags/l/jp.gif" alt="USA flag" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.0000"></p>
+                    <p class="currency-name">JPY = Japanese Yen</p>
+                    <p class="base-currency-rate">1 USD = 111.0401 JPY</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+            <li id="three" class="currency base-currency">
+                <img src="http://www.geonames.org/flags/l/us.gif" alt="USA flag" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.0000"></p>
+                    <p class="currency-name">USD = US Dollar</p>
+                    <p class="base-currency-rate">1 USD = 1 USD</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+            <li id="four" class="currency">
+                <img src="http://www.geonames.org/flags/l/jp.gif" alt="USA flag" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.0000"></p>
+                    <p class="currency-name">JPY = Japanese Yen</p>
+                    <p class="base-currency-rate">1 USD = 111.0401 JPY</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+            <li id="five" class="currency base-currency">
+                <img src="http://www.geonames.org/flags/l/us.gif" alt="USA flag" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.0000"></p>
+                    <p class="currency-name">USD = US Dollar</p>
+                    <p class="base-currency-rate">1 USD = 1 USD</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+            <li id="six" class="currency">
+                <img src="http://www.geonames.org/flags/l/jp.gif" alt="USA flag" class="flag">
+                <div class="info">
+                    <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.0000"></p>
+                    <p class="currency-name">JPY = Japanese Yen</p>
+                    <p class="base-currency-rate">1 USD = 111.0401 JPY</p>
+                </div>
+                <span class="close">&times;</span>
+            </li>
+        </ul>
+        <button class="add-currency-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-arrow-left" viewBox="0 0 512 512">
+                <path fill="red" stroke="#ffffff" stroke-linecap="square" stroke-miterlimit="10" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/>
+            </svg>
+            Add Currency
+        </button>
+        <ul class="add-currency-list">
+            <li data-currency="USD" class="disabled" ><img src="http://www.geonames.org/flags/l/us.gif" alt="USA flag" class="flag"><span>USD - US Dollar</span></li>
+            <li data-currency="NZD"><img src="http://www.geonames.org/flags/l/nz.gif" alt="New Zealand flag" class="flag"><span>NZ - New Zealand Dollar</span></li>
+            <li data-currency="CAD"><img src="http://www.geonames.org/flags/l/ca.gif" alt="Canadian flag" class="flag"><span>CA - Canadian Dollar</span></li>
+            <li data-currency="MXN"><img src="http://www.geonames.org/flags/l/mx.gif" alt="Mexican flag" class="flag"><span>MX - Mexican Peso</span></li>
+        </ul>
+    </div>
+
+    <!-- ====================JAVASCRIPT==================== -->
+    <!-- ==========CUSTOM Script========== -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
