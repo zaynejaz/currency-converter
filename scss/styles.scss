@@ -153,9 +153,9 @@ button.add-currency-btn{
             opacity: 1;
             left: 5%;
         }
-        + .add-currency-list{
-            left: 0;
-        }
+        // + .add-currency-list{
+        //     left: 0;
+        // }
     }
     &.open{
         + ul.add-currency-list {
