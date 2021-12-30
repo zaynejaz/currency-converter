@@ -1,52 +1,46 @@
-// ======= COUNTRY DATA=======
-const currencies = [
+// ======= COUNTRY DATA =======
+let currencies = [
     {
         country: "United States",
         name: "US Dollar",
         abbreviation: "USD",
         symbol: "\u0024",
-        flagURL: 'http://www.geonames.org/flags/l/us.gif', //"assets/images/flags/us.svg"
-        rate: 1.1325
+        flagURL: 'http://www.geonames.org/flags/l/us.gif' //"assets/images/flags/us.svg"
     },
     {
         country: "European Union",
         name: "Euro",
         abbreviation: "EUR",
         symbol: "\u20AC",
-        flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
-        rate: 1
+        flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
     },
     {
         country: "Japan",
         name: "Japanese Yen",
         abbreviation: "JPY",
         symbol: "\u00A5",
-        flagURL: "http://www.geonames.org/flags/l/jp.gif",
-        rate: 125.5600
+        flagURL: "http://www.geonames.org/flags/l/jp.gif"
     },
     {
         country: "United Kingdom",
         name: "British Pound",
         abbreviation: "GBP",
         symbol: "\u00A3",
-        flagURL: "http://www.geonames.org/flags/l/uk.gif",
-        rate: 0.8762
+        flagURL: "http://www.geonames.org/flags/l/uk.gif"
     },
     {
         country: "Australia",
         name: "Australian Dollar",
         abbreviation: "AUD",
         symbol: "\u0024",
-        flagURL: "http://www.geonames.org/flags/l/au.gif",
-        rate: 1.5923
+        flagURL: "http://www.geonames.org/flags/l/au.gif"
     },
     {
         country: "Canada",
         name: "Canadian Dollar",
         abbreviation: "CAD",
         symbol: "\u0024",
-        flagURL: "http://www.geonames.org/flags/l/ca.gif",
-        rate: 1.4976
+        flagURL: "http://www.geonames.org/flags/l/ca.gif"
     },
     {
         country: "",
@@ -123,8 +117,7 @@ const currencies = [
         name: "Russian Ruble",
         abbreviation: "RUB",
         symbol: "\u20BD",
-        flagURL: "http://www.geonames.org/flags/l/ru.gif",
-        rate: 74.8412
+        flagURL: "http://www.geonames.org/flags/l/ru.gif"
     },
     {
         country: "India",
@@ -239,3 +232,44 @@ const currencies = [
         flagURL: "http://www.geonames.org/flags/l/il.gif"
     }
 ]
+
+
+// Lets generate and push the country currency data dymamically
+let url = 'https://freecurrencyapi.net/api/v2';
+
+function params(paramObj) {
+    const one = "a3461cb0";
+    const two = "6947";
+    const three = "11ec";
+    const four = "a923";
+    const five = "89caf3795943";
+    return new URLSearchParams({
+        apikey: one + "-" + two + "-" + three + "-" + four + "-" + five,
+        ...paramObj
+    });
+}
+
+// Get the latest API endpoint data
+function getLatest(options) {
+    fetch(`${url}/latest?${params(options)}`)
+        .then(res => res.json())
+        .then(info => {
+            // Convert and latest API UNIX date to readable date
+            let unixApiDate = new Date(info.query.timestamp * 1000);
+            let formattedApiDate = ('0' + unixApiDate.getDate()).slice(-2) + '-' + ('0' + (unixApiDate.getMonth() + 1)).slice(-2) + '-' + unixApiDate.getFullYear() + ' - ' + unixApiDate.toLocaleTimeString([], { hour12: false, timeZoneName: "short" });
+            document.querySelector(".date").textContent = formattedApiDate;
+
+            // Show default base_currency (USD)
+            info.data["USD"] = 1;
+
+            // Only currencies with available exchange rates are shown in currencies array
+            currencies = currencies.filter(currency => info.data[currency.abbreviation]);
+            currencies.forEach(currency => currency.rate = info.data[currency.abbreviation]);
+
+            populateAddCurrencyList();
+            populateCurrenciesList();
+        })
+        .then(err => console.log(err))
+}
+
+getLatest();

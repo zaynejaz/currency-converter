@@ -145,7 +145,3 @@ function newCurrenciesListItem(currency) {
         </li>`
     );
 }
-
-populateAddCurrencyList();
-
-populateCurrenciesList();
