@@ -985,8 +985,10 @@ function getLatest(options) {
         .then(info => {
             // Convert and latest API UNIX date to readable date
             let unixApiDate = new Date(info.query.timestamp * 1000);
-            let formattedApiDate = ('0' + unixApiDate.getDate()).slice(-2) + '-' + ('0' + (unixApiDate.getMonth() + 1)).slice(-2) + '-' + unixApiDate.getFullYear() + ' - ' + unixApiDate.toLocaleTimeString([], { hour12: false, timeZoneName: "short" });
-            document.querySelector(".date").textContent = formattedApiDate;
+            let formattedApiDateDays = ('0' + unixApiDate.getDate()).slice(-2) + '-' + ('0' + (unixApiDate.getMonth() + 1)).slice(-2) + '-' + unixApiDate.getFullYear();
+            let formattedApiDateTime = unixApiDate.toLocaleTimeString([], { hour12: false, timeZoneName: "short" });
+            document.querySelector(".date .days").textContent = formattedApiDateDays;
+            document.querySelector(".date .time").textContent = formattedApiDateTime;
 
             // Show default base_currency (USD)
             info.data["USD"] = 1;

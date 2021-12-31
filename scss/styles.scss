@@ -51,7 +51,10 @@ body{
         background-color: var(--darkest);
         text-align: right;
         font-size: 0.75rem;
-        padding: 0.75rem 2rem .75rem 0;
+        padding: 0.75rem 2rem .75rem 2rem;
+        .days{
+            float: left;
+        }
     }
 }
 
@@ -221,4 +224,10 @@ ul.currencies::-webkit-scrollbar-thumb {
     .info .base-currency-rate { margin-left: 3.5rem; }
     ul.add-currency-list { bottom: 48px; height: calc(100vh - 80px - 51px); }
     .add-currency-btn i { left: 25%; top:0.65rem; }
+}
+
+@media (max-width: 396px) {
+    ul.currencies li {padding: 1rem 0rem;}
+    ul.currencies li .close {top:auto;bottom: 0;}
+    ul.currencies li .currency {margin-left:8px;}
 }
